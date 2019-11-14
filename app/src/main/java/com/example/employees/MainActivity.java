@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity
 {
     EditText fnameET, lnameET, ageET, weightET, feetET, inchesET;
     TextView outputTV;
+    Employee e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onButtonPressed(View v)
     {
-        Employee e = new Employee(
+        e = new Employee(
                 this.fnameET.getText().toString(),
                 this.lnameET.getText().toString(),
                 Integer.parseInt(this.ageET.getText().toString()),
@@ -50,10 +51,59 @@ public class MainActivity extends AppCompatActivity
                 Integer.parseInt(this.feetET.getText().toString()),
                 Integer.parseInt(this.inchesET.getText().toString()));
 
+
+        this.fnameET.setText("");
+        this.lnameET.setText("");
+        this.ageET.setText("");
+        this.weightET.setText("");
+        this.feetET.setText("");
+        this.inchesET.setText("");
+
+
         this.outputTV.setText(e.Display());
         //e.Display();
 
     }
 
+    public void onUpdateButtonPressed(View v)
+    {
+        if(!this.fnameET.getText().toString().equals(""))
+        {
+            e.firstName = this.fnameET.getText().toString();
+            this.fnameET.setText("");
+        }
+
+        if(!this.lnameET.getText().toString().equals(""))
+        {
+            e.lastName = this.lnameET.getText().toString();
+            this.lnameET.setText("");
+        }
+
+        if(!this.ageET.getText().toString().equals(""))
+        {
+            e.age = Integer.parseInt(this.ageET.getText().toString());
+            this.ageET.setText("");
+        }
+
+        if(!this.weightET.getText().toString().equals(""))
+        {
+            e.weight = Integer.parseInt(this.weightET.getText().toString());
+            this.weightET.setText("");
+        }
+
+        if(!this.feetET.getText().toString().equals(""))
+        {
+            e.heightFeet = Integer.parseInt(this.feetET.getText().toString());
+            this.feetET.setText("");
+        }
+
+        if(!this.inchesET.getText().toString().equals(""))
+        {
+            e.heightInches = Integer.parseInt(this.inchesET.getText().toString());
+            this.inchesET.setText("");
+        }
+
+        this.outputTV.setText(e.Display());
+    }
 
 }
